@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiswaJob - Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+    h1{
+      text-align: center;
+    }    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="radio"] {
+      width: calc(50% - 12px);
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    input[type="radio"] {
+      width: auto;
+      margin-bottom: 15px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .form-group {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .button.tertiary {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #007bff;
+      margin-top: 10px;
+    }
+    .button.tertiary:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Join SiswaJob</h1>
+    <form action="#">
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required>
+      </div>
+      <div class="form-group">
+        <label for="telephone">Telephone:</label>
+        <input type="text" id="telephone" name="telephone" value="+60" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label>User Category:</label>
+        <input type="radio" id="student" name="userCategory" value="student" required>
+        <label for="student">Student</label>
+        <input type="radio" id="employer" name="userCategory" value="employer" required>
+        <label for="employer">Employer</label>
+      </div>
+      <div class="form-group" id="businessNameSection" style="display:none;">
+        <br><label for="businessname">Business Name:</label>
+        <input type="text" id="businessname" name="businessname">
+      </div>
+      <div class="form-group" id="facultyNameSection" style="display:none;">
+        <br><label for="facultyname">Faculty Name:</label>
+        <input type="text" id="facultyname" name="facultyname">
+      </div>
+      <br>
+      <button type="submit" class="button primary">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+    <a href="index.html" class="button tertiary">Back to Home</a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const studentRadio = document.getElementById("student");
+      const employerRadio = document.getElementById("employer");
+      const businessNameSection = document.getElementById("businessNameSection");
+      const facultyNameSection = document.getElementById("facultyNameSection");
+
+      studentRadio.addEventListener("change", function() {
+        if (studentRadio.checked) {
+          businessNameSection.style.display = "none";
+          facultyNameSection.style.display = "block";
+        }
+      });
+
+      employerRadio.addEventListener("change", function() {
+        if (employerRadio.checked) {
+          facultyNameSection.style.display = "none";
+          businessNameSection.style.display = "block";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
