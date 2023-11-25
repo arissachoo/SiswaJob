@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>SiswaJob</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <style>
+        table, th, td {
+          border: 1px solid;
+        }
+        
+        th {text-align: center;}
+    </style>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-silver" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-silver">SiswaJob</div>
+                <div class="list-group list-group-flush bg-silver">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="StudentList.html">Students</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="EmployerList.html">Employer</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="AdminHome.html">Log out</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <h1 class="mt-4">Employer Job Applicant</h1>          
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>  
+                          <th>Student Name</th>
+                          <th>Faculty</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                           <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Nur Alia Syazani Binti Ali</td>
+                          <td>College of Engineering</td>
+                          <td>17/11/2023</td>
+                          <td>Accepted</td>
+                          <td>
+                              <a href="EmployerEditJobApplicant.html"><button type="button"> edit</button></a>
+                              <a href="ViewJobApplicant.html"><button type="button"> view</button></a>
+                              <a href="EmployerJobApplicant.html"><button type="button"> delete</button></a>
+                          </td>
+                        </tr>
+                       <tr>
+                           <td>Muhammad Asyraf Bin Zahid</td>
+                          <td>College of Build Environment</td>
+                          <td>17/11/2023</td>
+                          <td>Rejected</td>
+                          <td>
+                              <a href="EmployerEditJobApplicant.html"><button type="button"> edit</button></a>
+                              <a href="ViewJobApplicant.html"><button type="button"> view</button></a>
+                              <a href="EmployerJobApplicant.html"><button type="button"> delete</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Zaskiah Safiya Binti Ahmad</td>
+                          <td>College of Computing,Informatics and Mathematics</td>
+                          <td>17/11/2023</td>
+                          <td>Accepted</td>
+                          <td>
+                              <a href="EmployerEditJobApplicant.html"><button type="button"> edit</button></a>
+                              <a href="ViewJobApplicant.html"><button type="button"> view</button></a>
+                              <a href="EmployerJobApplicant.html"><button type="button"> delete</button></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <td>
+                        <a href="ViewEmployer.html"><button type="button">Back</button></a>
+                        <a href="EmployerAddJobApplicant.html"><button type="button">Add new job applicant</button></a>
+                    </td>
+                </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="web/scripts.js"></script>
+    </body>
+</html>
+

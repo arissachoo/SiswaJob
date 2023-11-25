@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiswaJob Dashboard</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+  <link href="styles.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <div class="border-end bg-biru" id="sidebar-wrapper">
+      <div class="border-end bg-biru" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-biru">SiswaJob</div>
+        <div class="list-group list-group-flush bg-biru">
+          <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmpDashboard.html">Dashboard</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmpHome.html">Home</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmpJobApplicant.html">Job Applicant</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmpProfile.html">Profile</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="index.html">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+
+        <h1 class="mt-4">Dashboard</h1>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Job Offers</h5>
+                <h1 class="card-text" id="jobApplicationsCount">0</h1>
+                <p class="card-text">Total job offers uploaded</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Successful Applicants</h5>
+                <h1 class="card-text" id="successfulApplicantsCount">0</h1>
+                <p class="card-text">Total applicants hired</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Pending Applicants</h5>
+                <h1 class="card-text" id="pendingApplicantsCount">0</h1>
+                <p class="card-text">Applicants awaiting further review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Pending Applicants -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rejected Applicants</h5>
+                <h1 class="card-text" id="pendingApplicantsCount">0</h1>
+                <p class="card-text">Total rejected applicants</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p><div class="card shadow mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Recent Job Postings</h5>
+                <div class="job-postings">
+                    <!-- Populate with recent job postings dynamically -->
+                </div>
+            </div>
+        </div>
+        
+        <p><div class="row">
+          <!-- Chart Section -->
+          <div class="col-lg-6 mb-4">
+                <!-- Job Applications Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Job Applications Chart</h6>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="jobApplicationsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Additional Chart -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Applicant Faculty Distribution</h5>
+                        <canvas id="facultyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simulated asynchronous data fetch
+        setTimeout(() => {
+            // Example data (replace this with actual fetched data)
+            const applications = [
+                { status: 'approved' },
+                { status: 'pending' },
+                { status: 'approved' },
+                { status: 'pending' }
+                // ... more data
+            ];
+
+            // Update card values
+            const jobApplicationsCount = document.getElementById('jobApplicationsCount');
+            const successfulApplicantsCount = document.getElementById('successfulApplicantsCount');
+            jobApplicationsCount.textContent = applications.length;
+            successfulApplicantsCount.textContent = applications.filter(application => application.status === 'approved').length;
+
+            // Chart data
+            const ctx = document.getElementById('jobApplicationsChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Job Applications', 'Successful Applicants'],
+                    datasets: [{
+                        label: 'Counts',
+                        data: [applications.length, applications.filter(application => application.status === 'approved').length],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }, 1000); // Simulating a delay in data fetching (1 second)
+        
+        // Simulated asynchronous data fetch for applicant faculties
+        setTimeout(() => {
+            // Example data (replace this with actual fetched data)
+            const faculties = [
+                { faculty: 'Engineering' },
+                { faculty: 'Arts' },
+                { faculty: 'Science' },
+                { faculty: 'Business' },
+                { faculty: 'Medicine' },
+                // ... more data
+            ];
+
+            // Calculate percentages for each faculty
+            const totalApplicants = faculties.length;
+            const facultyCounts = {};
+            faculties.forEach(applicant => {
+                facultyCounts[applicant.faculty] = (facultyCounts[applicant.faculty] || 0) + 1;
+            });
+
+            const facultyData = Object.values(facultyCounts);
+            const facultyLabels = Object.keys(facultyCounts);
+            const facultyPercentages = facultyData.map(count => ((count / totalApplicants) * 100).toFixed(2));
+
+            // Faculty distribution chart
+            const ctx = document.getElementById('facultyChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: facultyLabels,
+                    datasets: [{
+                        label: 'Faculty Distribution',
+                        data: facultyPercentages,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            // Add more colors if needed
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }, 1500); // Simulating a delay in data fetching (1.5 seconds)
+
+        
+        // Placeholder data for recent job postings
+        const placeholderJobPostings = [
+            {
+                title: 'Waiter/Waitress',
+                datePosted: '2023-11-15',
+                place: 'Secret Recipe Central i-City',
+            },
+            {
+                title: 'Front Desk Clerk',
+                datePosted: '2023-11-13',
+                place: 'Raia Hotel Kuala Lumpur',
+            },
+            // Add more placeholder job postings
+        ];
+
+        // Function to populate job postings
+        function populateJobPostings(jobPostings) {
+            const jobPostingsContainer = document.querySelector('.job-postings');
+
+            jobPostings.forEach(job => {
+                const jobElement = document.createElement('div');
+                jobElement.classList.add('job-posting');
+
+                const titleElement = document.createElement('h6');
+                titleElement.textContent = job.title;
+
+                const dateElement = document.createElement('p');
+                dateElement.textContent = `Date Posted: ${job.datePosted}`;
+
+                const placeElement = document.createElement('p');
+                placeElement.textContent = job.description;
+
+                jobElement.appendChild(titleElement);
+                jobElement.appendChild(dateElement);
+                jobElement.appendChild(placeElement);
+
+                jobPostingsContainer.appendChild(jobElement);
+            });
+        }
+
+        // Populate job postings on page load
+        window.addEventListener('load', () => {
+            populateJobPostings(placeholderJobPostings);
+        });
+
+
+    </script>
+</body>
+</html>
