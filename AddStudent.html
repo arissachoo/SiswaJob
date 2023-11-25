@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>SiswaJob</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles.css" rel="stylesheet" />
+        <style>
+
+            .container {
+                width: 600px;
+                height:90vh;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                margin-top:30px;
+            }
+            h3{
+                text-align: center;
+            }    
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            input[type="radio"] {
+                width: calc(50% - 12px);
+                margin-bottom: 10px;
+                padding: 8px;
+                font-size: 16px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                display: inline-block;
+            }
+            .form-group {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            button {
+                width: 100%;
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #007bff;
+                color: white;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            .button.tertiary {
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                color: #007bff;
+                margin-top: 10px;
+            }
+            .button.tertiary:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-biru" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-biru">SiswaJob</div>
+                <div class="list-group list-group-flush bg-biru">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="StudentList.html">Student</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmployerList.html">Employer</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-biru" href="EmployerList.html">Log out</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            &nbsp;
+            <div class="container">
+                <h3>Add Student</h3>
+                <form action="#">
+                    <div class="form-group">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Telephone:</label>
+                        <input type="text" id="telephone" name="telephone" value="+60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group" id="businessNameSection" style="display:none;">
+                        <br><label for="businessname">Business Name:</label>
+                        <input type="text" id="businessname" name="businessname">
+                    </div>
+                    <div class="form-group" id="facultyNameSection" style="display:none;">
+                        <br><label for="facultyname">Faculty Name:</label>
+                        <input type="text" id="facultyname" name="facultyname">
+                    </div>
+                    <br>
+                    <button type="submit" class="button primary">Add</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="web/scripts.js"></script>
+</body>
+</html>
