@@ -87,9 +87,9 @@ and open the template in the editor.
              <div class="border-end bg-silver" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-silver">SiswaJob</div>
                 <div class="list-group list-group-flush bg-silver">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="StudentList.html">Students</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="StudentList.html">Student</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="EmployerList.html">Employer</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="AdminLogin.html">Log out</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-silver" href="index.html">Log out</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -98,32 +98,24 @@ and open the template in the editor.
                 <h3>Add Employer</h3>
                 <form action="EmployerList.html" method="POST">
                     <div class="form-group">
-                        <label for="firstname">First Name:</label>
-                        <input type="text" id="firstname" name="firstname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Last Name:</label>
-                        <input type="text" id="lastname" name="lastname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telephone">Telephone:</label>
-                        <input type="text" id="telephone" name="telephone" value="+60" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="firstname">Company ID</label>
+                        <input type="text" id="cmpanyid" name="cmpanyid" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
                     <div class="form-group">
-                        <label for="businessname">Business Name:</label>
-                        <input type="text" id="facultyname" name="businessname">
+                        <label for="lastname">Company Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Address: </label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <br>
                     <button type="submit" class="button primary">Add</button>
